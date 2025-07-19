@@ -1,0 +1,11 @@
+# APEX: Agentic Portrait EXperience - Minimal Dependencies
+# Use this if you encounter dependency conflicts with requirements.txt
+
+# Essential packages only
+gradio>=3.40.0
+numpy>=1.21.0
+Pillow>=9.0.0
+requests>=2.25.0
+
+# Development and Testing
+pytest>=6.0.0

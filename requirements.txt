@@ -1,0 +1,26 @@
+# APEX: Agentic Portrait EXperience - Dependencies
+
+# Core ML and AI libraries
+torch>=1.13.0
+transformers>=4.21.0
+diffusers>=0.18.0
+
+# Computer Vision and Image Processing
+opencv-python>=4.7.0
+Pillow>=9.5.0
+
+# Web Interface
+gradio>=3.50.0
+
+# Utilities
+numpy>=1.21.0
+requests>=2.28.0
+tqdm>=4.64.0
+
+# Development and Testing
+pytest>=7.0.0
+pytest-cov>=4.0.0
+
+# Optional: Image quality assessment (install separately if needed)
+# clip-by-openai>=1.0.1
+# aesthetic-predictor-v2-5>=0.1.0
