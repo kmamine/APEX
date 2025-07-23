@@ -60,6 +60,7 @@ export interface FormData {
   custom_notes: string;
   save_profile: boolean;
   preset_name?: string;
+  seed?: number | null;
 }
 
 // Preset data structure
