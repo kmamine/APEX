@@ -2,15 +2,28 @@
 
 **APEX** is an **agentic, iterative portrait generation system** that uses **LLMs, VLMs, and Flux diffusion models** to create **high-quality professional portraits**. It mimics a **human photographer's workflow**, refining each generation step until the result perfectly matches the user's desired style, attire, vibe, and background.
 
-## 📋 **Table of Contents**
-- [System Architecture](#-system-architecture)
-- [Key Features](#-key-features)
-- [How It Works](#-how-it-works)
-- [Installation](#-installation)
-- [Quick Start](#-quick-start)
-- [Project Structure](#-project-structure)
-- [Usage Examples](#-usage-examples)
-- [Contributing](#-contributing)️ **APEX: Agentic Portrait EXperience**
+## � **Quick Setup**
+
+### For New Users - Web App (Recommended):
+```bash
+git clone https://github.com/kmamine/FluxPortrait.git
+cd FluxPortrait/web-app
+./setup.sh
+```
+**Access at**: http://localhost:3000
+
+### For Complete Setup Guide:
+📖 **[See SETUP-GUIDE.md](SETUP-GUIDE.md)** - Comprehensive installation guide for all platforms
+
+## �📋 **Table of Contents**
+- [🚀 Quick Setup](#-quick-setup)
+- [🏗️ System Architecture](#️-system-architecture)
+- [✨ Key Features](#-key-features)
+- [🧠 How It Works](#-how-it-works)
+- [⚛️ Web Interface](#️-web-interface)
+- [📁 Project Structure](#-project-structure)
+- [📖 Documentation](#-documentation)
+- [🤝 Contributing](#-contributing)️ **APEX: Agentic Portrait EXperience**
 
 **APEX** is an **agentic, iterative portrait generation system** that uses **LLMs, VLMs, and Flux diffusion models** to create **high-quality professional portraits**.
 It mimics a **human photographer’s workflow**, refining each generation step until the result perfectly matches the user’s desired style, attire, vibe, and background.
@@ -71,30 +84,48 @@ It mimics a **human photographer’s workflow**, refining each generation step u
 
 ---
 
-## 🚀 **Installation**
+## ⚛️ **Web Interface**
+
+APEX now includes a **modern, responsive React web application** for easy profile creation and management.
+
+### Features:
+- 📱 **Mobile-Responsive**: Works on all devices
+- 🎨 **Professional Presets**: LinkedIn, Creative, Academic, Executive, Startup templates
+- 💾 **Local Storage**: Automatic profile saving
+- 🔄 **Real-time JSON**: See output as you type
+- ⚡ **Fast Setup**: One-command installation
+
+### Quick Start:
+```bash
+cd web-app
+./setup.sh
+# Opens at http://localhost:3000
+```
+
+---
+
+## 🚀 **Python Backend Installation**
 
 ### Prerequisites
 - Python 3.8+
 - CUDA-capable GPU (recommended)
 - 8GB+ VRAM for optimal performance
 
-### Setup
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/apex-portrait.git
-   cd apex-portrait
-   ```
+### Quick Setup
+```bash
+git clone https://github.com/kmamine/FluxPortrait.git
+cd FluxPortrait
 
-2. **Create a virtual environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+# Install dependencies
+pip install -r requirements.txt
+
+# Launch application
+python app.py
+```
 
 ### Required Dependencies
 - `gradio` - Frontend UI
@@ -108,13 +139,21 @@ It mimics a **human photographer’s workflow**, refining each generation step u
 
 ## ⚡ **Quick Start**
 
-1. **Launch the application**
-   ```bash
-   python app.py
-   ```
-   
-   Or use the legacy standalone form:
-   ```bash
+### Option 1: Web App (Recommended)
+```bash
+cd web-app
+./setup.sh
+# Access at http://localhost:3000
+```
+
+### Option 2: Python Backend
+```bash
+python app.py
+# Access at http://localhost:7860
+```
+
+### Option 3: Simple Form
+```bash
    python user_form.py
    ```
 
@@ -220,6 +259,26 @@ result = generator.generate({
 
 ---
 
+## 📖 **Documentation**
+
+### Complete Setup Guides
+- 📚 **[SETUP-GUIDE.md](SETUP-GUIDE.md)** - Comprehensive setup guide for all platforms and scenarios
+- ⚛️ **[README-WebApp.md](README-WebApp.md)** - React web app specific documentation
+- 🐍 **Python Backend** - See sections above and in SETUP-GUIDE.md
+
+### Quick References
+- **Web App**: Modern React interface with mobile support
+- **Python Backend**: Full AI processing with Gradio interface  
+- **Requirements**: Node.js 18+, Python 3.8+, 4GB+ RAM
+- **Platforms**: macOS, Windows, Linux
+
+### Getting Help
+1. Check the comprehensive **[SETUP-GUIDE.md](SETUP-GUIDE.md)** first
+2. Run `./web-app/check-requirements.sh` for system diagnostics
+3. Create an issue on GitHub with system details
+
+---
+
 ## 🤝 **Contributing**
 
 We welcome contributions! Please follow these steps:
@@ -230,6 +289,20 @@ We welcome contributions! Please follow these steps:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+**Development Setup**:
+```bash
+# Setup both environments
+git clone https://github.com/YOUR_USERNAME/FluxPortrait.git
+cd FluxPortrait
+
+# Python backend
+python -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+
+# React frontend  
+cd web-app && npm install && npm run dev
+```
+
 ---
 
 ## 🙏 **Acknowledgments**
@@ -237,6 +310,7 @@ We welcome contributions! Please follow these steps:
 - Flux AI for the diffusion models
 - Hugging Face for the transformer models
 - The open-source AI community for inspiration and tools
+- React and Node.js communities for frontend tools
 
 ---
 

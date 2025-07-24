@@ -1,0 +1,4 @@
+fastapi
+uvicorn
+vllm # Add vLLM when installing on supported hardware
+pydantic

@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import axios from 'axios';
 import { FormSection } from './FormSection';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
@@ -35,6 +36,8 @@ export const PortraitForm = () => {
   const [advancedPrompt, setAdvancedPrompt] = useState('');
   const [savedFile, setSavedFile] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [jobId, setJobId] = useState<string | null>(null);
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
 
   const updateField = useCallback((field: keyof FormData, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -67,7 +70,8 @@ export const PortraitForm = () => {
   const handleSubmit = useCallback(async (e: any) => {
     e.preventDefault();
     setIsLoading(true);
-
+    setJobId(null);
+    setImageUrl(null);
     try {
       // Validate basic info
       const validation = validateBasicInfo(
@@ -106,6 +110,24 @@ export const PortraitForm = () => {
       setAdvancedPrompt(prompt);
       setStatus(`✅ Advanced style profile generated successfully!${saveMessage}`);
 
+      // --- API call to Job Manager service ---
+      try {
+        const response = await axios.post('http://localhost:8000/jobs', {
+          prompt: prompt,
+          style: formData.resolution || 'portrait',
+          seed: formData.seed || null
+        });
+        if (response.data && response.data.job_id) {
+          setJobId(response.data.job_id);
+          setStatus(prev => prev + ` | 🖼️ Job submitted: ${response.data.job_id}`);
+          // imageUrl will be set after job is processed by backend
+        } else {
+          setStatus(prev => prev + ' | ⚠️ No job returned');
+        }
+      } catch (apiError) {
+        setStatus(prev => prev + ` | ❌ Backend error: ${apiError}`);
+      }
+      // --- End API call ---
     } catch (error) {
       setStatus(`❌ Error generating profile: ${error}`);
     } finally {
@@ -317,6 +339,20 @@ export const PortraitForm = () => {
                     <Input
                       label="💾 Saved File"
                       value={savedFile}
+                      readOnly
+                    />
+                  )}
+                  {jobId && (
+                    <Input
+                      label="🖼️ Image Job ID"
+                      value={jobId}
+                      readOnly
+                    />
+                  )}
+                  {imageUrl && (
+                    <Input
+                      label="🖼️ Image URL"
+                      value={imageUrl}
                       readOnly
                     />
                   )}

@@ -1,0 +1,4 @@
+fastapi
+uvicorn
+pydantic
+# Add Flux/SDXL dependencies here
